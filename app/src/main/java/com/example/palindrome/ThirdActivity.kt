@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,7 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var emptyStateTextView: TextView
     private lateinit var userAdapter: UserAdapter
+    private lateinit var backButton: ImageButton
 
     private val userList = mutableListOf<User>()
     private var currentPage = 1
@@ -34,14 +36,18 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
 
-        // Initialize views
         recyclerView = findViewById(R.id.recyclerView)
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
+        backButton = findViewById(R.id.backButton)
 
         userAdapter = UserAdapter(userList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = userAdapter
+
+        backButton.setOnClickListener {
+            finish()
+        }
 
         swipeRefreshLayout.setOnRefreshListener {
             refreshData()

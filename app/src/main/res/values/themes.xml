@@ -9,11 +9,4 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="fontFamily">@font/poppins</item>
     </style>
-<!--    <style name="Theme.Palindrome" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
-<!--        <item name="colorPrimary">@color/your_primary</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
-<!--        <item name="colorSecondary">@color/your_secondary</item>-->
-<!--        <item name="android:editTextBackground">@null</item> &lt;!&ndash; avoid black box &ndash;&gt;-->
-<!--    </style>-->
-
 </resources>

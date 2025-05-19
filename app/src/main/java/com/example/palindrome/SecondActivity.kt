@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import android.widget.ImageButton
 class SecondActivity : AppCompatActivity() {
     private lateinit var welcomeTextView: TextView
     private lateinit var nameTextView: TextView
     private lateinit var selectedUserTextView: TextView
     private lateinit var chooseUserButton: Button
+    private lateinit var backButton: ImageButton
 
     private var userName: String = ""
     private var selectedUserName: String = ""
@@ -27,10 +28,13 @@ class SecondActivity : AppCompatActivity() {
         nameTextView = findViewById(R.id.nameTextView)
         selectedUserTextView = findViewById(R.id.selectedUserTextView)
         chooseUserButton = findViewById(R.id.chooseUserButton)
+        backButton = findViewById(R.id.backButton)
 
         userName = intent.getStringExtra("NAME") ?: ""
         nameTextView.text = userName
-
+        backButton.setOnClickListener {
+            finish()
+        }
         chooseUserButton.setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_USER_SELECTION)

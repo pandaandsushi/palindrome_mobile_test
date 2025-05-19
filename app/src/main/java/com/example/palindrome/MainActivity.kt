@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPalindrome(text: String): Boolean {
-        // Remove spaces and convert to lowercase for accurate comparison
         val cleanText = text.replace("\\s+".toRegex(), "").lowercase()
         return cleanText == cleanText.reversed()
     }
