@@ -24,7 +24,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/input"
         android:hint="Name"
         android:inputType="textPersonName"
         android:padding="15dp"
@@ -41,7 +41,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/input"
         android:hint="Palindrome"
         android:inputType="text"
         android:padding="15dp"
@@ -58,12 +58,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/btn_check"
+        android:background="@drawable/button"
         android:text="CHECK"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/palindromeEditText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/palindromeEditText" />
 
     <Button
         android:id="@+id/nextButton"
@@ -72,11 +72,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/btn_next"
+        android:background="@drawable/button"
         android:text="NEXT"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/checkButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/checkButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

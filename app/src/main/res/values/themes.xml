@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Palindrome" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#2C7DA0</item>
-        <item name="colorPrimaryDark">#2A6F97</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
         <item name="colorAccent">#61A5C2</item>
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:editTextBackground">@null</item>
     </style>
+<!--    <style name="Theme.Palindrome" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+<!--        <item name="colorPrimary">@color/your_primary</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        <item name="colorSecondary">@color/your_secondary</item>-->
+<!--        <item name="android:editTextBackground">@null</item> &lt;!&ndash; avoid black box &ndash;&gt;-->
+<!--    </style>-->
+
 </resources>
