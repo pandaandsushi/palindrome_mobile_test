@@ -6,6 +6,8 @@
         <item name="colorAccent">#61A5C2</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:editTextBackground">@null</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins</item>
     </style>
 <!--    <style name="Theme.Palindrome" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
 <!--        <item name="colorPrimary">@color/your_primary</item>-->

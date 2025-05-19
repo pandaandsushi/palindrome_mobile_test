@@ -3,6 +3,7 @@ package com.example.palindrome
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -38,17 +39,14 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
 
-        // Set up RecyclerView
         userAdapter = UserAdapter(userList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = userAdapter
 
-        // Set up SwipeRefreshLayout
         swipeRefreshLayout.setOnRefreshListener {
             refreshData()
         }
 
-        // Set up scroll listener for pagination
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -67,7 +65,6 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
             }
         })
 
-        // Load initial data
         loadUsers()
     }
 
@@ -87,7 +84,8 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 isLoading = false
                 swipeRefreshLayout.isRefreshing = false
-
+                Log.d("API_RESPONSE", "Success: ${response.body()?.data}")
+                Log.e("API_ERROR", "Failure")
                 if (response.isSuccessful) {
                     val userResponse = response.body()
                     userResponse?.let {
@@ -95,7 +93,6 @@ class ThirdActivity : AppCompatActivity(), UserAdapter.OnUserClickListener {
                         userList.addAll(it.data)
                         userAdapter.notifyDataSetChanged()
 
-                        // Show/hide empty state
                         if (userList.isEmpty()) {
                             emptyStateTextView.visibility = View.VISIBLE
                             recyclerView.visibility = View.GONE
