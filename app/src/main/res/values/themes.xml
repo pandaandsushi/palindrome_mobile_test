@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Change from android:Theme.Material.Light.NoActionBar to Theme.AppCompat.Light.NoActionBar -->
     <style name="Theme.Palindrome" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Primary brand color -->
         <item name="colorPrimary">#2C7DA0</item>
         <item name="colorPrimaryDark">#2A6F97</item>
         <item name="colorAccent">#61A5C2</item>
