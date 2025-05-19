@@ -1,47 +1,59 @@
 package com.example.palindrome
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.palindrome.ui.theme.PalindromeTheme
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var nameEditText: EditText
+    private lateinit var palindromeEditText: EditText
+    private lateinit var checkButton: Button
+    private lateinit var nextButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            PalindromeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        setContentView(R.layout.activity_main)
+
+        nameEditText = findViewById(R.id.nameEditText)
+        palindromeEditText = findViewById(R.id.palindromeEditText)
+        checkButton = findViewById(R.id.checkButton)
+        nextButton = findViewById(R.id.nextButton)
+
+        checkButton.setOnClickListener {
+            val text = palindromeEditText.text.toString().trim()
+            if (text.isEmpty()) {
+                palindromeEditText.error = "Please enter a text"
+                return@setOnClickListener
             }
+
+            val isPalindrome = checkPalindrome(text)
+            val message = if (isPalindrome) "isPalindrome" else "not palindrome"
+
+            AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show()
+        }
+
+        nextButton.setOnClickListener {
+            val name = nameEditText.text.toString().trim()
+            if (name.isEmpty()) {
+                nameEditText.error = "Please enter your name"
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("NAME", name)
+            startActivity(intent)
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PalindromeTheme {
-        Greeting("Android")
+    private fun checkPalindrome(text: String): Boolean {
+        // Remove spaces and convert to lowercase for accurate comparison
+        val cleanText = text.replace("\\s+".toRegex(), "").lowercase()
+        return cleanText == cleanText.reversed()
     }
 }
